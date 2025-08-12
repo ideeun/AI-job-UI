@@ -64,11 +64,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
         {!isCollapsed && (
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">PT</span>
+              <span className="text-white font-bold text-sm">AR</span>
             </div>
-            <span className="font-semibold text-secondary-900">
-              Project Template
-            </span>
+            <span className="font-semibold text-secondary-900">AI RPA</span>
           </div>
         )}
 
