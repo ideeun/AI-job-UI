@@ -56,7 +56,8 @@ export interface NavItem {
 }
 
 // Component Props
-export interface ButtonProps {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   children: React.ReactNode;
@@ -69,6 +70,33 @@ export interface CardProps {
   children: React.ReactNode;
   className?: string;
   padding?: "sm" | "md" | "lg";
+}
+
+// Project Template types
+export interface ProjectTemplate {
+  id: string;
+  name: string;
+  mainPrompt: string;
+  responseFormatPrompt: string;
+  responseJson: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CreateProjectTemplateData {
+  name: string;
+  mainPrompt: string;
+  responseFormatPrompt: string;
+  responseJson: string;
+}
+
+// Modal types
+export interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+  size?: "sm" | "md" | "lg" | "xl";
 }
 
 // Utility types

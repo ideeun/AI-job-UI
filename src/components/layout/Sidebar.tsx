@@ -20,22 +20,21 @@ import {
 const navigationItems: NavItem[] = [
   {
     id: "prompt",
-    label: "Main Prompt",
+    label: "Template Projectss",
     href: "/",
     icon: BriefcaseIcon,
   },
-
-  {
-    id: "format",
-    label: "Response Format Prompt",
-    href: "/format",
-    icon: Cog6ToothIcon,
-  },
   {
     id: "json",
-    label: "Response JSON",
-    href: "/json",
+    label: "Projects",
+    href: "/projects",
     icon: BookmarkIcon,
+  },
+  {
+    id: "format",
+    label: "Settings",
+    href: "/settings",
+    icon: Cog6ToothIcon,
   },
 ];
 
