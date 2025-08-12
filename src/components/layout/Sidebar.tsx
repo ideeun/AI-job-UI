@@ -40,9 +40,10 @@ const navigationItems: NavItem[] = [
 
 interface SidebarProps {
   className?: string;
+  onMobileClose?: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ className }) => {
+const Sidebar: React.FC<SidebarProps> = ({ className, onMobileClose }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const pathname = usePathname();
 
@@ -50,17 +51,26 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
     setIsCollapsed(!isCollapsed);
   };
 
+  const handleLinkClick = () => {
+    // Закрываем мобильное меню при клике на ссылку
+    if (onMobileClose) {
+      onMobileClose();
+    }
+  };
+
   return (
     <div
       className={cn(
-        "flex flex-col bg-white dark:bg-gray-900 border-r border-secondary-200 dark:border-gray-700 transition-all duration-300 ease-in-out",
-        isCollapsed ? "w-16" : "w-64",
+        "flex flex-col bg-white dark:bg-gray-900 border-r border-secondary-200 dark:border-gray-700 transition-all duration-300 ease-in-out h-full",
+        // Для мобильных устройств всегда фиксированная ширина
+        onMobileClose ? "w-64" : isCollapsed ? "w-16" : "w-64",
         className
       )}
     >
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-secondary-200 dark:border-gray-700">
-        {!isCollapsed && (
+        {/* Logo and Brand - показываем всегда на мобильных, и когда не свернуто на десктопе */}
+        {(onMobileClose || !isCollapsed) && (
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-primary-600 dark:bg-primary-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">AR</span>
@@ -71,16 +81,19 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
           </div>
         )}
 
-        <button
-          onClick={toggleSidebar}
-          className="p-1.5 rounded-lg hover:bg-secondary-100 dark:hover:bg-gray-800 transition-colors"
-        >
-          {isCollapsed ? (
-            <ChevronRightIcon className="w-5 h-5 text-secondary-600 dark:text-gray-400" />
-          ) : (
-            <ChevronLeftIcon className="w-5 h-5 text-secondary-600 dark:text-gray-400" />
-          )}
-        </button>
+        {/* Collapse button - только для десктопной версии */}
+        {!onMobileClose && (
+          <button
+            onClick={toggleSidebar}
+            className="p-1.5 rounded-lg hover:bg-secondary-100 dark:hover:bg-gray-800 transition-colors"
+          >
+            {isCollapsed ? (
+              <ChevronRightIcon className="w-5 h-5 text-secondary-600 dark:text-gray-400" />
+            ) : (
+              <ChevronLeftIcon className="w-5 h-5 text-secondary-600 dark:text-gray-400" />
+            )}
+          </button>
+        )}
       </div>
 
       {/* Navigation */}
@@ -93,12 +106,13 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
             <Link
               key={item.id}
               href={item.href}
+              onClick={handleLinkClick}
               className={cn(
                 "flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors group",
                 isActive
                   ? "bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400 border-r-2 border-primary-600 dark:border-primary-400"
                   : "text-secondary-700 dark:text-gray-300 hover:bg-secondary-100 dark:hover:bg-gray-800 hover:text-secondary-900 dark:hover:text-white",
-                isCollapsed && "justify-center"
+                isCollapsed && !onMobileClose && "justify-center"
               )}
             >
               {Icon && (
@@ -108,18 +122,20 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                     isActive
                       ? "text-primary-600 dark:text-primary-400"
                       : "text-secondary-400 dark:text-gray-500 group-hover:text-secondary-600 dark:group-hover:text-gray-300",
-                    !isCollapsed && "mr-3"
+                    (!isCollapsed || onMobileClose) && "mr-3"
                   )}
                 />
               )}
-              {!isCollapsed && <span className="truncate">{item.label}</span>}
+              {(!isCollapsed || onMobileClose) && (
+                <span className="truncate">{item.label}</span>
+              )}
             </Link>
           );
         })}
       </nav>
 
       {/* Footer */}
-      {!isCollapsed && (
+      {(!isCollapsed || onMobileClose) && (
         <div className="p-4 border-t border-secondary-200 dark:border-gray-700">
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-secondary-300 dark:bg-gray-700 rounded-full flex items-center justify-center">

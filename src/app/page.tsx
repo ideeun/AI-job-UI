@@ -42,22 +42,23 @@ export default function HomePage() {
     <Layout title="Template Projects">
       <div className="h-full">
         {/* Header with create button */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-secondary-900 dark:text-white mb-2">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 md:mb-8 space-y-4 sm:space-y-0">
+          <div className="flex-1">
+            <h1 className="text-2xl md:text-3xl font-bold text-secondary-900 dark:text-white mb-1 md:mb-2">
               Project Templates
             </h1>
-            <p className="text-secondary-600 dark:text-gray-400">
+            <p className="text-sm md:text-base text-secondary-600 dark:text-gray-400">
               Create and manage your project templates
             </p>
           </div>
           <Button
             variant="primary"
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-2 w-full sm:w-auto justify-center"
+            size="sm"
           >
             <svg
-              className="w-5 h-5"
+              className="w-4 h-4 md:w-5 md:h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -70,16 +71,16 @@ export default function HomePage() {
                 d="M12 4v16m8-8H4"
               />
             </svg>
-            <span>Create Template</span>
+            <span className="text-sm md:text-base">Create Template</span>
           </Button>
         </div>
 
         {/* Main content area */}
-        <div className="flex items-center justify-center h-64">
-          <div className="text-center">
-            <div className="w-16 h-16 mx-auto mb-4 bg-secondary-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
+        <div className="flex items-center justify-center min-h-64 px-4">
+          <div className="text-center max-w-md w-full">
+            <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 bg-secondary-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
               <svg
-                className="w-8 h-8 text-secondary-400 dark:text-gray-500"
+                className="w-6 h-6 md:w-8 md:h-8 text-secondary-400 dark:text-gray-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -93,13 +94,18 @@ export default function HomePage() {
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-medium text-secondary-900 dark:text-white mb-2">
+            <h3 className="text-base md:text-lg font-medium text-secondary-900 dark:text-white mb-2">
               No templates yet
             </h3>
-            <p className="text-secondary-500 dark:text-gray-400 mb-4">
+            <p className="text-sm md:text-base text-secondary-500 dark:text-gray-400 mb-4 px-2">
               Get started by creating your first project template
             </p>
-            <Button variant="outline" onClick={() => setIsModalOpen(true)}>
+            <Button
+              variant="outline"
+              onClick={() => setIsModalOpen(true)}
+              className="w-full sm:w-auto"
+              size="sm"
+            >
               Create your first template
             </Button>
           </div>

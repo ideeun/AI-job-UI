@@ -117,16 +117,22 @@ const ProjectTemplateForm: React.FC<ProjectTemplateFormProps> = ({
         className="font-mono text-sm"
       />
 
-      <div className="flex justify-end space-x-3 pt-4">
+      <div className="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3 pt-4">
         <Button
           type="button"
           variant="outline"
           onClick={onCancel}
           disabled={isLoading}
+          className="w-full sm:w-auto order-2 sm:order-1"
         >
           Cancel
         </Button>
-        <Button type="submit" variant="primary" disabled={isLoading}>
+        <Button
+          type="submit"
+          variant="primary"
+          disabled={isLoading}
+          className="w-full sm:w-auto order-1 sm:order-2"
+        >
           {isLoading ? "Creating..." : "Create Template"}
         </Button>
       </div>

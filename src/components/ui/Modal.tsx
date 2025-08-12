@@ -54,11 +54,13 @@ const Modal: React.FC<ModalProps> = ({
       />
 
       {/* Modal */}
-      <div className="flex min-h-full items-center justify-center p-4">
+      <div className="flex min-h-full items-center justify-center p-2 sm:p-4">
         <div
           ref={modalRef}
           className={cn(
             "relative w-full transform overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-xl transition-all",
+            // На мобильных делаем Modal почти полноэкранным
+            "mx-2 sm:mx-auto",
             sizeClasses[size],
             "animate-fade-in"
           )}
@@ -68,7 +70,7 @@ const Modal: React.FC<ModalProps> = ({
           aria-labelledby="modal-title"
         >
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-secondary-200 dark:border-gray-700 px-6 py-4">
+          <div className="flex items-center justify-between border-b border-secondary-200 dark:border-gray-700 px-4 sm:px-6 py-4">
             <h3
               id="modal-title"
               className="text-lg font-semibold text-secondary-900 dark:text-white"
@@ -98,7 +100,7 @@ const Modal: React.FC<ModalProps> = ({
           </div>
 
           {/* Content */}
-          <div className="px-6 py-4">{children}</div>
+          <div className="px-4 sm:px-6 py-4">{children}</div>
         </div>
       </div>
     </div>
