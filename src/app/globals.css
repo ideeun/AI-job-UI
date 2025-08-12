@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  
+  body {
+    @apply bg-secondary-50 text-secondary-900;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-secondary-900;
+  }
+  
+  h1 {
+    @apply text-3xl lg:text-4xl;
+  }
+  
+  h2 {
+    @apply text-2xl lg:text-3xl;
+  }
+  
+  h3 {
+    @apply text-xl lg:text-2xl;
+  }
+  
+  h4 {
+    @apply text-lg lg:text-xl;
+  }
+  
+  h5 {
+    @apply text-base lg:text-lg;
+  }
+  
+  h6 {
+    @apply text-sm lg:text-base;
+  }
+}
+
+@layer components {
+  /* Custom scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.secondary.300') theme('colors.secondary.100');
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-secondary-100;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-secondary-300 rounded-full;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-secondary-400;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    border: 2px solid theme('colors.secondary.200');
+    border-top: 2px solid theme('colors.primary.600');
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Custom focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+}
+
+@layer utilities {
+  /* Text utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Layout utilities */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Interactive states */
+  .interactive {
+    @apply transition-colors duration-200 ease-in-out;
+  }
+  
+  .interactive:hover {
+    @apply bg-secondary-50;
+  }
+  
+  .interactive:active {
+    @apply bg-secondary-100;
+  }
+}
