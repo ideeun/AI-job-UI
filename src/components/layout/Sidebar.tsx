@@ -53,30 +53,32 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   return (
     <div
       className={cn(
-        "flex flex-col bg-white border-r border-secondary-200 transition-all duration-300 ease-in-out",
+        "flex flex-col bg-white dark:bg-gray-900 border-r border-secondary-200 dark:border-gray-700 transition-all duration-300 ease-in-out",
         isCollapsed ? "w-16" : "w-64",
         className
       )}
     >
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-secondary-200">
+      <div className="flex items-center justify-between p-4 border-b border-secondary-200 dark:border-gray-700">
         {!isCollapsed && (
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-primary-600 dark:bg-primary-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">AR</span>
             </div>
-            <span className="font-semibold text-secondary-900">AI RPA</span>
+            <span className="font-semibold text-secondary-900 dark:text-white">
+              AI RPA
+            </span>
           </div>
         )}
 
         <button
           onClick={toggleSidebar}
-          className="p-1.5 rounded-lg hover:bg-secondary-100 transition-colors"
+          className="p-1.5 rounded-lg hover:bg-secondary-100 dark:hover:bg-gray-800 transition-colors"
         >
           {isCollapsed ? (
-            <ChevronRightIcon className="w-5 h-5 text-secondary-600" />
+            <ChevronRightIcon className="w-5 h-5 text-secondary-600 dark:text-gray-400" />
           ) : (
-            <ChevronLeftIcon className="w-5 h-5 text-secondary-600" />
+            <ChevronLeftIcon className="w-5 h-5 text-secondary-600 dark:text-gray-400" />
           )}
         </button>
       </div>
@@ -94,8 +96,8 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
               className={cn(
                 "flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors group",
                 isActive
-                  ? "bg-primary-50 text-primary-700 border-r-2 border-primary-600"
-                  : "text-secondary-700 hover:bg-secondary-100 hover:text-secondary-900",
+                  ? "bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400 border-r-2 border-primary-600 dark:border-primary-400"
+                  : "text-secondary-700 dark:text-gray-300 hover:bg-secondary-100 dark:hover:bg-gray-800 hover:text-secondary-900 dark:hover:text-white",
                 isCollapsed && "justify-center"
               )}
             >
@@ -104,8 +106,8 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                   className={cn(
                     "w-5 h-5 flex-shrink-0",
                     isActive
-                      ? "text-primary-600"
-                      : "text-secondary-400 group-hover:text-secondary-600",
+                      ? "text-primary-600 dark:text-primary-400"
+                      : "text-secondary-400 dark:text-gray-500 group-hover:text-secondary-600 dark:group-hover:text-gray-300",
                     !isCollapsed && "mr-3"
                   )}
                 />
@@ -118,16 +120,16 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
 
       {/* Footer */}
       {!isCollapsed && (
-        <div className="p-4 border-t border-secondary-200">
+        <div className="p-4 border-t border-secondary-200 dark:border-gray-700">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-secondary-300 rounded-full flex items-center justify-center">
-              <UserIcon className="w-4 h-4 text-secondary-600" />
+            <div className="w-8 h-8 bg-secondary-300 dark:bg-gray-700 rounded-full flex items-center justify-center">
+              <UserIcon className="w-4 h-4 text-secondary-600 dark:text-gray-400" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-secondary-900 truncate">
+              <p className="text-sm font-medium text-secondary-900 dark:text-white truncate">
                 User
               </p>
-              <p className="text-xs text-secondary-500 truncate">
+              <p className="text-xs text-secondary-500 dark:text-gray-400 truncate">
                 user@example.com
               </p>
             </div>

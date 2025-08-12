@@ -44,10 +44,10 @@ export default function HomePage() {
         {/* Header with create button */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-secondary-900 mb-2">
+            <h1 className="text-3xl font-bold text-secondary-900 dark:text-white mb-2">
               Project Templates
             </h1>
-            <p className="text-secondary-600">
+            <p className="text-secondary-600 dark:text-gray-400">
               Create and manage your project templates
             </p>
           </div>
@@ -77,9 +77,9 @@ export default function HomePage() {
         {/* Main content area */}
         <div className="flex items-center justify-center h-64">
           <div className="text-center">
-            <div className="w-16 h-16 mx-auto mb-4 bg-secondary-100 rounded-full flex items-center justify-center">
+            <div className="w-16 h-16 mx-auto mb-4 bg-secondary-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
               <svg
-                className="w-8 h-8 text-secondary-400"
+                className="w-8 h-8 text-secondary-400 dark:text-gray-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -93,10 +93,10 @@ export default function HomePage() {
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-medium text-secondary-900 mb-2">
+            <h3 className="text-lg font-medium text-secondary-900 dark:text-white mb-2">
               No templates yet
             </h3>
-            <p className="text-secondary-500 mb-4">
+            <p className="text-secondary-500 dark:text-gray-400 mb-4">
               Get started by creating your first project template
             </p>
             <Button variant="outline" onClick={() => setIsModalOpen(true)}>

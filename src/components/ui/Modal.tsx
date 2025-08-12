@@ -48,7 +48,7 @@ const Modal: React.FC<ModalProps> = ({
     <div className="fixed inset-0 z-50 overflow-y-auto">
       {/* Overlay */}
       <div
-        className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
+        className="fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-70 transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -58,7 +58,7 @@ const Modal: React.FC<ModalProps> = ({
         <div
           ref={modalRef}
           className={cn(
-            "relative w-full transform overflow-hidden rounded-lg bg-white shadow-xl transition-all",
+            "relative w-full transform overflow-hidden rounded-lg bg-white dark:bg-gray-800 shadow-xl transition-all",
             sizeClasses[size],
             "animate-fade-in"
           )}
@@ -68,16 +68,16 @@ const Modal: React.FC<ModalProps> = ({
           aria-labelledby="modal-title"
         >
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-secondary-200 px-6 py-4">
+          <div className="flex items-center justify-between border-b border-secondary-200 dark:border-gray-700 px-6 py-4">
             <h3
               id="modal-title"
-              className="text-lg font-semibold text-secondary-900"
+              className="text-lg font-semibold text-secondary-900 dark:text-white"
             >
               {title}
             </h3>
             <button
               onClick={onClose}
-              className="rounded-md p-2 text-secondary-400 hover:bg-secondary-100 hover:text-secondary-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="rounded-md p-2 text-secondary-400 dark:text-gray-400 hover:bg-secondary-100 dark:hover:bg-gray-700 hover:text-secondary-600 dark:hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-offset-gray-800"
               aria-label="Close modal"
             >
               <svg

@@ -13,7 +13,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, title, className }) => {
   return (
-    <div className="flex h-screen bg-secondary-50">
+    <div className="flex h-screen bg-secondary-50 dark:bg-gray-900">
       {/* Sidebar */}
       <Sidebar />
 
@@ -23,7 +23,12 @@ const Layout: React.FC<LayoutProps> = ({ children, title, className }) => {
         <Header title={title} />
 
         {/* Page Content */}
-        <main className={cn("flex-1 overflow-auto", className)}>
+        <main
+          className={cn(
+            "flex-1 overflow-auto bg-secondary-50 dark:bg-gray-900",
+            className
+          )}
+        >
           <div className="p-6">{children}</div>
         </main>
       </div>

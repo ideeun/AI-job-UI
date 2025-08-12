@@ -9,7 +9,7 @@ const Card: React.FC<CardProps> = ({
   ...props
 }) => {
   const baseClasses =
-    "bg-white rounded-lg shadow-sm border border-secondary-200";
+    "bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-secondary-200 dark:border-gray-700 transition-colors duration-200";
 
   const paddingClasses = {
     sm: "p-4",
